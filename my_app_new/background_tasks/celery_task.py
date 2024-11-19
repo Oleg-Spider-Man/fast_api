@@ -1,7 +1,7 @@
 import smtplib
 from email.message import EmailMessage
 from celery import Celery
-from config import SMTP_USER, SMTP_PASSWORD, REDIS_HOST, REDIS_PORT
+from my_app_new.config import SMTP_USER, SMTP_PASSWORD, REDIS_HOST, REDIS_PORT
 
 celery_app = Celery('tasks', broker=f'redis://{REDIS_HOST}:{REDIS_PORT}')
 
