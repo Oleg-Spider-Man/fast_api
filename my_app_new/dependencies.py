@@ -1,4 +1,4 @@
-from my_app_new.auth.database import async_session_maker
+from my_app_new.database import async_session_maker
 
 
 def get_db():

@@ -1,9 +1,8 @@
 from typing import Optional
-
+from my_app_new.auth.models import User
 from fastapi import Depends, Request
 from fastapi_users import BaseUserManager, IntegerIDMixin
-
-from my_app_new.auth.database import User, get_user_db
+from my_app_new.auth.func import get_user_db
 from my_app_new.config import SECRET_AUTH_MNG
 
 
