@@ -1,18 +1,18 @@
-# from sqlalchemy.orm import Session
-# import hashlib
-# from my_app_new import models, schemas
+from sqlalchemy.orm import Session
+
+from my_app_new.operations import models
 
 
-# def get_user(db: Session, user_id: int):
-#     return db.query(models.User).filter(models.User.id == user_id).first()
+def get_author(db: Session, author_id: int):
+    return db.query(models.Author).filter(models.Author.id == author_id).first()
 
 
 # def get_user_by_email(db: Session, email: str):
 #     return db.query(models.User).filter(models.User.email == email).first()
 
 
-# def get_users(db: Session, skip: int = 0, limit: int = 100):
-#     return db.query(models.User).offset(skip).limit(limit).all()
+def get_users(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Author).offset(skip).limit(limit).all()
 
 
 # def create_user(db: Session, user: schemas.UserCreate):
@@ -27,8 +27,8 @@
 #     return db_user
 
 
-# def get_items(db: Session, skip: int = 0, limit: int = 100):
-#     return db.query(models.Item).offset(skip).limit(limit).all()
+def get_books(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Book).offset(skip).limit(limit).all()
 #
 #
 # def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
