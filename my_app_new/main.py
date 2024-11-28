@@ -1,21 +1,11 @@
 from fastapi import FastAPI, Request, BackgroundTasks, Depends
-from fastapi_users import FastAPIUsers
 from my_app_new.auth.auth import auth_backend
-from my_app_new.auth.manager import get_user_manager
-from my_app_new.auth.models import User
+from my_app_new.auth.user_obj import current_user, fastapi_users
 from my_app_new.background_tasks.func_backgroundtasks import write_notification
-from my_app_new.routers import celery_email
+from my_app_new.routers import celery_email, authors, books
 from my_app_new.auth.schemas import UserRead, UserCreate
 
 app = FastAPI(summary="здесь можно написать краткое описание приложения")
-
-
-fastapi_users = FastAPIUsers[User, int](
-    get_user_manager,
-    [auth_backend],
-)
-
-current_user = fastapi_users.current_user()
 
 
 @app.middleware('http')
@@ -42,6 +32,6 @@ app.include_router(
     tags=["auth"],
 )
 
-# app.include_router(users.router)
-# app.include_router(items.router)
+app.include_router(authors.router)
+app.include_router(books.router)
 app.include_router(celery_email.router)
