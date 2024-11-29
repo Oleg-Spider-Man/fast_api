@@ -11,10 +11,6 @@ class BookCreate(BaseModel):
     author_id: int
 
 
-# class ResponseBook(BaseModel):
-#     books: List[BookCreate]
-
-
 class Book(BookCreate):
     id: int
 
