@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI, Request, BackgroundTasks, Depends
 from my_app_new.auth.auth import auth_backend
 from my_app_new.auth.user_obj import current_user, fastapi_users
@@ -35,3 +36,7 @@ app.include_router(
 app.include_router(authors.router)
 app.include_router(books.router)
 app.include_router(celery_email.router)
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,5 +1,3 @@
-from typing import List
-
 from pydantic import BaseModel
 
 
@@ -8,7 +6,6 @@ class BookCreate(BaseModel):
     description: str
     genre: str
     price: int
-    author_id: int
 
 
 class Book(BookCreate):
