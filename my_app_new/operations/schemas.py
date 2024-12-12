@@ -21,6 +21,7 @@ class AuthorCreate(BaseModel):
 
 class AuthorRead(AuthorCreate):
     id: int
+    #books: list[Book] = []
 
     class Config:
         orm_mode = True

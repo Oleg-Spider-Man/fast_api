@@ -11,8 +11,8 @@ router = APIRouter(
     tags=["authors"],
 )
 
-
-@router.post("/", dependencies=[Depends(current_user)], response_model=schemas.AuthorRead)
+#, dependencies=[Depends(current_user)]
+@router.post("/", response_model=schemas.AuthorRead)
 async def create_author(author: schemas.AuthorCreate, db: AsyncSession = Depends(get_async_session)):
     db_author = await crud.get_author_by_author_name(db, author_name=author.author_name)
     if db_author:
