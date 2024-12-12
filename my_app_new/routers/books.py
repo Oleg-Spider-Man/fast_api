@@ -9,8 +9,8 @@ router = APIRouter(
     tags=["books"],
 )
 
-
-@router.get("/", dependencies=[Depends(current_user)], response_model=list[schemas.Book])
+# , dependencies=[Depends(current_user)]
+@router.get("/", response_model=list[schemas.Book])
 async def read_books(skip: int = 0, limit: int = 100, db: AsyncSession = Depends(get_async_session)):
     books = await crud.get_books(db, skip=skip, limit=limit)
     return books
