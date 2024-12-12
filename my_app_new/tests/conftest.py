@@ -1,4 +1,5 @@
 import asyncio
+import httpx
 import pytest
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from my_app_new.config import DB_USER, DB_HOST, DB_PORT, DB_NAME_TEST, DB_PASS
@@ -27,7 +28,6 @@ app.dependency_overrides[get_async_session] = override_get_async_session
 
 @pytest.fixture(scope='session')  # ,  autouse=True)
 def event_loop(request):
-    """Create an instance of the default event loop for each tests case."""
     loop = asyncio.get_event_loop_policy().new_event_loop()
     yield loop
     loop.close()
@@ -48,22 +48,8 @@ async def db_session():
         await conn.run_sync(metadata.drop_all)
 
 
-#Переопределяем зависимость get_async_session в тестах
-# @pytest.fixture(scope="function", autouse=True)
-# def override_get_async_session(db_session):
-#     # Переопределяем зависимость
-#     app.dependency_overrides[get_async_session] = lambda: db_session
-#
-#     # Убираем переопределение после выполнения теста
-#     yield
-#
-#     # Очистим переопределение
-#     del app.dependency_overrides[get_async_session]
+@pytest.fixture(scope="session")
+async def aclient():
+    async with httpx.AsyncClient(app=app, base_url="http://test") as aclient:
+        yield aclient
 
-
-
-# @pytest.fixture(scope="session", autouse=True)
-# def set_event_loop():
-#     loop = asyncio.get_event_loop()
-#     yield loop
-#     # loop.close()
