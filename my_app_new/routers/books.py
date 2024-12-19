@@ -7,7 +7,7 @@ from my_app_new.dependencies import get_async_session
 router = APIRouter(
     prefix="/books",
     tags=["books"],
-    # dependencies=[Depends(current_user)]
+    dependencies=[Depends(current_user)]
 )
 
 

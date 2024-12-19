@@ -1,1 +1,1 @@
-notification for ggggg@GGGGG: some notification
+notification for email@email: some notification
