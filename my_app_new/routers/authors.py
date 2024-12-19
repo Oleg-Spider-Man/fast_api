@@ -9,7 +9,7 @@ from my_app_new.operations import crud, schemas
 router = APIRouter(
     prefix="/authors",
     tags=["authors"],
-    # dependencies=[Depends(current_user)]  УБРАТЬ С КАЖДОГО МАРШРУТА, ОСТАВТЬ ЗДЕСЬ
+    dependencies=[Depends(current_user)]
 )
 
 
