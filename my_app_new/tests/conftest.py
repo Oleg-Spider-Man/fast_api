@@ -43,7 +43,7 @@ async def db_session():
         await conn.run_sync(metadata.drop_all)
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 async def aclient():
     async with httpx.AsyncClient(app=app, base_url="http://test") as aclient:
         yield aclient
