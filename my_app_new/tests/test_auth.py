@@ -3,7 +3,7 @@ import pytest
 
 @pytest.mark.asyncio
 async def test_register(aclient):
-    response = await aclient.post("/auth/register", json={
+    response = await aclient.post("/auth_/register", json={
         "email": "user@example.com",
         "password": "string",
         "is_active": True,
@@ -26,7 +26,7 @@ async def test_auth(aclient):
              "username": "user@example.com",
              "password": "string"
          }
-    response = await aclient.post("/auth/jwt/login", data=login_data)
+    response = await aclient.post("/auth_/jwt/login", data=login_data)
     assert response.status_code == 204  # 200
     # Получаем куки из ответа
     cookies = response.cookies

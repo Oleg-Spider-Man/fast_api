@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from my_app_new.auth.user_obj import current_user
+from my_app_new.auth_.user_obj import current_user
 from my_app_new.dependencies import get_async_session
 from my_app_new.operations import crud, schemas
 
