@@ -1,10 +1,10 @@
 import uvicorn
 from fastapi import FastAPI, Request, BackgroundTasks
-from my_app_new.auth.auth import auth_backend
-from my_app_new.auth.user_obj import fastapi_users
+from my_app_new.auth_.auth import auth_backend
+from my_app_new.auth_.user_obj import fastapi_users
 from my_app_new.background_tasks.func_backgroundtasks import write_notification
 from my_app_new.routers import celery_email, authors, books
-from my_app_new.auth.schemas import UserRead, UserCreate
+from my_app_new.auth_.schemas import UserRead, UserCreate
 
 app = FastAPI(summary="здесь можно написать краткое описание приложения")
 
@@ -23,14 +23,14 @@ async def send_notification(email: str, background_tasks: BackgroundTasks):
 
 app.include_router(
     fastapi_users.get_auth_router(auth_backend),
-    prefix="/auth/jwt",
-    tags=["auth"],
+    prefix="/auth_/jwt",
+    tags=["auth_"],
 )
 
 app.include_router(
     fastapi_users.get_register_router(UserRead, UserCreate),
-    prefix="/auth",
-    tags=["auth"],
+    prefix="/auth_",
+    tags=["auth_"],
 )
 
 app.include_router(authors.router)
