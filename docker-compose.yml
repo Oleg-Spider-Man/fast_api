@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   db:
-    image: postgres:17
+    image: postgres:11
     container_name: db_app
     env_file:
       - .env-docker
@@ -29,7 +29,7 @@ services:
     env_file:
       - .env-docker
     container_name: celery_app
-    command: ["/app/docker/celery.sh", "celery"]
+    command: ["/app/docker/celery.sh"]
     depends_on:
       - redis
 
@@ -39,7 +39,7 @@ services:
     env_file:
       - .env-docker
     container_name: flower_app
-    command: ["/app/docker/celery.sh", "flower"]
+    command: ["/app/docker/flower.sh"]
     depends_on:
       - redis
       - celery
