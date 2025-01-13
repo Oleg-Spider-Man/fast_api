@@ -3,6 +3,8 @@ services:
   db:
     image: postgres:11
     container_name: db_app
+    volumes:
+      - ./data:/app/data
     env_file:
       - .env-docker
 
