@@ -1,10 +1,8 @@
 import asyncio
 import httpx
 import pytest
-from celery import Celery
 from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
-
 from my_app_new.background_tasks.celery_task import celery_app
 from my_app_new.config import DB_USER, DB_HOST, DB_PORT, DB_NAME_TEST, DB_PASS
 from my_app_new.database import Base
@@ -59,5 +57,3 @@ def celery_worker():
     # для асинхронного теста эту фисктуру можно убрать, но тогда нужно включить celery и redis
     celery_app.conf.update(task_always_eager=True)
     yield celery_app
-
-
