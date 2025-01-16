@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.mark.asyncio
-async def test_get_email(aclient):
+async def test_get_email(aclient, celery_worker):
     # должен быть включен redis
     response = await aclient.get('/email/')
     assert response.status_code == 200
