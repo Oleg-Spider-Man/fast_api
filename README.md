@@ -40,15 +40,15 @@ FastAPI Book Authoring Application
 Как запустить приложение
 
 Клонируйте репозиторий:
-git clone https://github.com/Oleg-Spider-Man/fast_api.git
+ git clone https://github.com/Oleg-Spider-Man/fast_api.git
 
 Перейдите в директорию проекта:
-cd fast_api
+ cd fast_api
 
 Запустите с использованием Docker
 
 Для запуска всех сервисов (PostgreSQL, Redis, приложение FastAPI, Celery) выполните:
-docker-compose up --build
+ docker-compose up --build
 
 Использование API:
 Приложение будет доступно по адресу:
